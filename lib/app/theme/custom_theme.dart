@@ -20,7 +20,8 @@ class AppConstants {
   static const double radius4 = 4.0;
   static const double radius6 = 6.0;
   static const double radius8 = 8.0;
-  static const double spaceSmall = 4.0;
-  static const double spaceMedium = 6.0;
-  static const double spaceLarge = 8.0;
+  static const double radius16 = 16.0;
+  static const double spaceSmall = 8.0;
+  static const double spaceMedium = 16.0;
+  static const double spaceLarge = 24.0;
 }
