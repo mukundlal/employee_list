@@ -7,7 +7,6 @@ class EmployeeDatabase {
   static final EmployeeDatabase instance = EmployeeDatabase._init();
   static Database? _database;
 
-
   EmployeeDatabase._init();
 
   Future<Database> get database async {
@@ -53,6 +52,22 @@ class EmployeeDatabase {
     final db = await instance.database;
     const orderBy = 'name';
     final result = await db.query('employees', orderBy: orderBy);
+    return result.map((json) => Employee.fromMap(json)).toList();
+  }
+
+  Future<List<Employee>> readAllActiveEmployees() async {
+    final db = await instance.database;
+    const orderBy = 'name';
+    final result = await db.query('employees',
+        orderBy: orderBy, where: 'is_employee_active = ?', whereArgs: [1]);
+    return result.map((json) => Employee.fromMap(json)).toList();
+  }
+
+  Future<List<Employee>> readAllNonActiveEmployees() async {
+    final db = await instance.database;
+    const orderBy = 'name';
+    final result = await db.query('employees',
+        orderBy: orderBy, where: 'is_employee_active = ?', whereArgs: [0]);
     return result.map((json) => Employee.fromMap(json)).toList();
   }
 

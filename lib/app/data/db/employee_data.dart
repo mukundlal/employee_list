@@ -22,7 +22,7 @@ class Employee {
       'role': role,
       'start_date': startDate,
       'end_date': endDate,
-      'is_employee_active': endDate == null
+      'is_employee_active': endDate?.isNotEmpty??true
           ? 0
           : isEmployeeActive
               ? 1
